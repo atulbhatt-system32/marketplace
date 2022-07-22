@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500&family=Montserrat:wght@100&family=Space+Grotesk&display=swap');
+
+@font-face {
+  font-family: 'Eloquia Light';
+  src: url("fonts/EloquiaText-ExtraLight.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'Eloquia Display';
+  src: url("fonts/EloquiaDisplay-ExtraBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url("fonts/FontsFree-Net-SFProDisplay-Regular.ttf") format("opentype");
+}
+
+body {
+  margin: 0;
+  font-family: 'Epilogue', 'Eloquia Light', 'Eloquia Display', sans-serif;
+  background-color: #E5E5E5;
+}
