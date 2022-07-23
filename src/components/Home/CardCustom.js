@@ -1,8 +1,10 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
+import { useNavigate } from "react-router-dom";
 
 const CardCustom = ({ src, title, author }) => {
+  const navigate = useNavigate();
   return (
     <Card
       key={title}
@@ -19,6 +21,7 @@ const CardCustom = ({ src, title, author }) => {
         borderRadius: "5px",
         margin: "auto",
       }}
+      onClick={() => navigate(`/view`)}
     >
       <img
         src={`${src}?h=120&fit=crop&auto=format`}

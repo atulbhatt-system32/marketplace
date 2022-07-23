@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
 import { styled } from "@mui/material/styles";
 import Switch from "@mui/material/Switch";
 import { useNavigate } from "react-router-dom";
+// import AddIcon from "@mui/icons-material/Add";
 
 const AntSwitch = styled(Switch)(({ theme }) => ({
   width: "48px",
@@ -51,6 +51,17 @@ const DetailsForm = () => {
   const navigate = useNavigate();
   const [rentalSwitch, setRentalSwitch] = useState(false);
   const [buySwitch, setBuySwitch] = useState(false);
+  const [detailFile, setDetailFile] = useState(null);
+
+  const handleDetailFile = (e) => {
+    const btn = document.getElementById("detail-file");
+    btn.click();
+  };
+
+  function handleFilePick(e) {
+    let file = e.target.files[0];
+    setDetailFile(file);
+  }
 
   return (
     <Box sx={{ mt: "34px" }}>
@@ -183,7 +194,7 @@ const DetailsForm = () => {
       </Typography>
       <TextField
         id="outlined-basic"
-        placeholder='e.g. "add any tutorial video links here..."'
+        placeholder='e.g. "add any file here"'
         label=""
         variant="outlined"
         sx={{
@@ -199,6 +210,14 @@ const DetailsForm = () => {
             },
           },
         }}
+        value={detailFile?.name}
+        onClick={() => handleDetailFile()}
+      />
+      <input
+        type="file"
+        style={{ display: "none" }}
+        id="detail-file"
+        onClick={(e) => handleFilePick(e)}
       />
       <Typography
         sx={{

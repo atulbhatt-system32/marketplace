@@ -166,9 +166,6 @@ const Header = () => {
                     cursor: "pointer",
                   },
                 }}
-                onClick={() => {
-                  navigate("/view");
-                }}
               >
                 <AccountBalanceWalletOutlinedIcon
                   sx={{ marginRight: "8px", marginTop: "-2px" }}
