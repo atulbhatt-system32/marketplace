@@ -135,9 +135,9 @@ const DetailsForm = () => {
           mt: "32px",
         }}
       >
-        Media/Files
+        Video
       </Typography>
-      <Typography
+      {/* <Typography
         sx={{
           fontFamily: "Eloquia Light",
           fontWeight: 600,
@@ -168,7 +168,7 @@ const DetailsForm = () => {
               <AddIcon style={{ color: "#fff" }} />
             </Box>
           ))}
-      </Box>
+      </Box> */}
       <Typography
         sx={{
           fontFamily: "Eloquia Light",
@@ -179,7 +179,7 @@ const DetailsForm = () => {
           mb: "8px",
         }}
       >
-        Links
+        Files
       </Typography>
       <TextField
         id="outlined-basic"
