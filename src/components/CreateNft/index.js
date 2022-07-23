@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import check from "../../images/Rectangle.png";
@@ -8,6 +8,17 @@ import { useNavigate } from "react-router-dom";
 
 const CreateNft = () => {
   const navigate = useNavigate();
+  const [thumbnail, setThumbnail] = useState(null);
+  function thumbnailPicker() {
+    let btn = document.getElementById("thumbnail-picker");
+    btn.click();
+  }
+
+  function thumbnailSetter(e) {
+    let url = URL.createObjectURL(e.target.files[0]);
+    setThumbnail(url);
+  }
+
   return (
     <Box
       sx={{
@@ -40,7 +51,7 @@ const CreateNft = () => {
       </Box>
       <img
         alt=""
-        src={check}
+        src={thumbnail || check}
         style={{
           height: "134px",
           width: "153px",
@@ -48,6 +59,13 @@ const CreateNft = () => {
           marginTop: "47px",
           borderRadius: "4px",
         }}
+      />
+      <input
+        type="file"
+        accept="image/*"
+        style={{ display: "none" }}
+        id="thumbnail-picker"
+        onChange={(e) => thumbnailSetter(e)}
       />
       <Button
         sx={{
@@ -64,8 +82,9 @@ const CreateNft = () => {
             bgcolor: "#4C5AFE",
           },
         }}
+        onClick={() => thumbnailPicker()}
       >
-        <img alt="" src={frame} style={{}} />
+        <img alt="thumbnail" src={frame} style={{}} />
         <Typography
           sx={{
             fontFamily: "Eloquia Light",
