@@ -3,6 +3,7 @@ import { Box, Button, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import CardCustom from "./CardCustom";
+import FilterPop from "./Popups/filter";
 import image1 from "../../images/gym1.png";
 import image2 from "../../images/gym2.png";
 import image3 from "../../images/gym3.png";
@@ -44,6 +45,8 @@ const data = [
 ];
 
 const Popular = () => {
+  const [isFilterOpen, SetIsFilterOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
   return (
     <Box sx={{ padding: "9px" }}>
       <Box
@@ -70,8 +73,20 @@ const Popular = () => {
             alignItems: "center",
           }}
         >
-          <FilterListIcon sx={{ height: "18px", mt: "-2px" }} /> Filter
+          <FilterListIcon
+            sx={{ height: "18px", mt: "-2px" }}
+            onClick={(e) => {
+              setAnchorEl(e.currentTarget);
+              SetIsFilterOpen(true);
+            }}
+          />{" "}
+          Filter
         </Typography>
+        <FilterPop
+          isOpen={isFilterOpen}
+          setIsOpen={SetIsFilterOpen}
+          anchorEl={anchorEl}
+        />
       </Box>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>

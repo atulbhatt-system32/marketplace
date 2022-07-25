@@ -1,15 +1,15 @@
 import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
 import Market from "./Market";
 import Header from "./Header";
+import Search from "./Popups/Search";
 
 import { makeStyles } from "@mui/styles";
 import Popular from "./Popular";
 import Gym from "./Gym";
 import search from "../../images/search.png";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const useStyles = makeStyles({
   tabs: {
@@ -49,6 +49,8 @@ function a11yProps(index) {
 
 export default function Home() {
   const [value, setValue] = React.useState(0);
+  const [isSearchOpen, setIsSearchOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const classes = useStyles();
 
   const handleChange = (event, newValue) => {
@@ -131,7 +133,14 @@ export default function Home() {
             {...a11yProps(2)}
           />
         </Tabs>
-        <img src={search} alt="" style={{}} />
+        <img
+          src={search}
+          alt="search glass"
+          onClick={(e) => {
+            setIsSearchOpen(true);
+            setAnchorEl(e.currentTarget);
+          }}
+        />
       </Box>
       <TabPanel value={value} index={0}>
         <Market />
@@ -142,6 +151,11 @@ export default function Home() {
       <TabPanel value={value} index={2}>
         <Gym />
       </TabPanel>
+      <Search
+        isSearchOpen={isSearchOpen}
+        setIsSearchOpen={setIsSearchOpen}
+        anchorEl={anchorEl}
+      />
     </Box>
   );
 }
